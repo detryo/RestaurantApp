@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterVC: UIViewController {
     
@@ -18,17 +19,69 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var passwordCheckImage: UIImageView!
     @IBOutlet weak var confirmPassCheckImage: UIImageView!
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        confirmPassTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     }
     
-
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        
+        guard let passwordText = passwordTextField.text else { return }
+        
+        //if we have started typing in the confirm pass text field
+        if textField == confirmPassTextField {
+            passwordCheckImage.isHidden = false
+            confirmPassCheckImage.isHidden = false
+        } else {
+            // clear text field
+            if passwordText.isEmpty {
+                passwordCheckImage.isHidden = true
+                confirmPassCheckImage.isHidden = true
+                confirmPassTextField.text = ""
+            }
+        }
+        
+        // Make it so when the password match, the checkmarks turn green
+        if passwordTextField.text == confirmPassTextField.text {
+            passwordCheckImage.image = UIImage(named: AppImages.greenCheck)
+            confirmPassCheckImage.image = UIImage(named: AppImages.greenCheck)
+        } else {
+            passwordCheckImage.image = UIImage(named: AppImages.redCheck)
+            confirmPassCheckImage.image = UIImage(named: AppImages.redCheck)
+        }
+    }
+    // Registramos nuevos usuarios y tambien el usuario anonimo puede registrarse
     @IBAction func registerClicked(_ sender: UIButton) {
+        // Mensajes de error
+        guard let email = emailTextField.text, email.isNotEmpty,
+              let password = passwordTextField.text, password.isNotEmpty,
+              let userName = userNameTextField.text, userName.isNotEmpty else {
+                simpleAlert(title: "Error", message: "Please fill out all fields")
+                return
+        }
+        // Mensajes de error
+        guard let confirmPass = confirmPassTextField.text, confirmPass == password else {
+            simpleAlert(title: "Error", message: "Password do not match")
+            return
+        }
+        
+        activityIndicator.startAnimating()
+        // Creamos el registro de usuario y el del anonimo
+        guard let authUser = Auth.auth().currentUser else { return }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        authUser.link(with: credential) { (result, error) in
+            
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                Auth.auth().handleFireAuthError(error: error, viewController: self)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-    
 }
