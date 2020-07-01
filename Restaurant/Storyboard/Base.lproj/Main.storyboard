@@ -10,7 +10,7 @@
         <!--Restaurant-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="HomeVC" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,14 +52,24 @@
                     <navigationItem key="navigationItem" title="Restaurant" id="wGh-mY-nEh">
                         <barButtonItem key="leftBarButtonItem" title="Login" id="lkd-8S-0fW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="loginOutClicked:" destination="BYZ-38-t0r" id="foC-Nn-efr"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="bar_button_cart" id="J9e-Hh-zdV"/>
-                            <barButtonItem image="bar_button_star" id="MIu-ba-GIl"/>
+                            <barButtonItem image="bar_button_cart" id="J9e-Hh-zdV">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem image="bar_button_star" id="MIu-ba-GIl">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <segue destination="n8f-1B-h6r" kind="show" id="DkL-iD-8hb"/>
+                        <outlet property="activityIndicator" destination="Lni-Rm-jZy" id="JAG-df-IV5"/>
+                        <outlet property="collectionView" destination="i9v-ZY-Yoh" id="LkY-d1-Jvg"/>
+                        <outlet property="loginOutButton" destination="lkd-8S-0fW" id="fTe-Op-XpT"/>
+                        <segue destination="n8f-1B-h6r" kind="show" identifier="toProductVC" id="DkL-iD-8hb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,6 +106,9 @@
                         <viewLayoutGuide key="safeArea" id="Y8P-wU-UJd"/>
                     </view>
                     <navigationItem key="navigationItem" id="zhl-FF-Z7w"/>
+                    <connections>
+                        <outlet property="tableView" destination="UNV-Pj-6SQ" id="4Db-ef-bax"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ust-09-BCV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

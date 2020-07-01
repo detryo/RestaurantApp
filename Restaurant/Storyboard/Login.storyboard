@@ -10,7 +10,7 @@
         <!--RegisterVC-->
         <scene sceneID="sCS-jz-354">
             <objects>
-                <viewController id="s7a-Zn-hqt" customClass="RegisterVC" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="s7a-Zn-hqt" customClass="RegisterVC" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iUL-yv-tSG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,7 @@
         <!--LoginVC-->
         <scene sceneID="FWr-P2-5Pd">
             <objects>
-                <viewController id="Ww5-Ku-sKw" customClass="LoginVC" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ww5-Ku-sKw" customClass="LoginVC" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m5y-tK-GEr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

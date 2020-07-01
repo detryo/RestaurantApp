@@ -34,3 +34,7 @@ struct Identifier {
     static let categoryCell = "CategoryCell"
     static let productCell = "ProductCell"
 }
+
+struct Segue {
+    static let toProductVC = "toProductVC"
+}

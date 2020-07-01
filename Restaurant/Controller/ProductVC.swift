@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ProductVC: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var product = [Product]()
+    var category: Category!
 
     override func viewDidLoad() {
         super.viewDidLoad()
