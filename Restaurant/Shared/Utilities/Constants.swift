@@ -41,6 +41,6 @@ struct Segues {
     // Admin Segues
     static let toAddEditCategory = "toAddEditCategory"
     static let toProductsVC = "toProductsVC"
-    static let toAddeditProduct = "toAddeditProduct"
+    static let toAddEditProduct = "toAddeditProduct"
     static let toEditCategory = "toEditCategory"
 }
