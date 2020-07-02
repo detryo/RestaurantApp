@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestore
 
 struct Product {
-    
+
     var name: String
     var id: String
     var category: String
@@ -19,9 +19,9 @@ struct Product {
     var imageURL: String
     var timeStamp: Timestamp
     
-    init(data: [String : Any]) {
+    init(data : [String : Any ] ) {
         
-        self.name = data["data"] as? String ?? ""
+        self.name = data["name"] as? String ?? ""
         self.id = data["id"] as? String ?? ""
         self.category = data["category"] as? String ?? ""
         self.price = data["price"] as? Double ?? 0.0

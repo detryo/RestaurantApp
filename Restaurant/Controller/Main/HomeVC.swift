@@ -17,16 +17,16 @@ class HomeVC: UIViewController {
     
     // Variables
     var categories = [Category]()
-    var selectedcategory: Category!
-    var database: Firestore!
-    var listener: ListenerRegistration!
+    var selectedCategory: Category!
+    var database : Firestore!
+    var listener : ListenerRegistration!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         database = Firestore.firestore()
         setupCollectionView()
-        setupAnonymousUser()
+        setupInitialAnonymousUser()
         setupNavigationBar()
     }
     
@@ -34,10 +34,10 @@ class HomeVC: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: Identifier.categoryCell, bundle: nil), forCellWithReuseIdentifier: Identifier.categoryCell)
+        collectionView.register(UINib(nibName: Identifiers.categoryCell, bundle: nil), forCellWithReuseIdentifier: Identifiers.categoryCell)
     }
     
-    func setupAnonymousUser() {
+    func setupInitialAnonymousUser() {
         
         if Auth.auth().currentUser == nil {
             Auth.auth().signInAnonymously { (result, error) in
@@ -51,7 +51,7 @@ class HomeVC: UIViewController {
     
     func setupNavigationBar() {
         
-        guard let font = UIFont(name: "Futura", size: 20) else { return }
+        guard let font = UIFont(name: "futura", size: 24) else { return }
         
         navigationController?.navigationBar.titleTextAttributes = [
                                                                     NSAttributedString.Key.foregroundColor : UIColor.white,
@@ -59,6 +59,8 @@ class HomeVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        setCategoriesListener()
         
         if let user = Auth.auth().currentUser, !user.isAnonymous {
             loginOutButton.title = "Logout"
@@ -68,9 +70,6 @@ class HomeVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
-        setCategoriesListener()
-        
         listener.remove()
         categories.removeAll()
         collectionView.reloadData()
@@ -81,7 +80,7 @@ class HomeVC: UIViewController {
         listener = database.categories.addSnapshotListener({ (snap, error) in
             
             if let error = error {
-                debugPrint(error)
+                debugPrint(error.localizedDescription)
                 return
             }
             
@@ -103,56 +102,51 @@ class HomeVC: UIViewController {
     }
     
     func presentLoginController() {
-        
         let storyboard = UIStoryboard(name: Storyboard.login, bundle: nil)
-        let controller = storyboard.instantiateViewController(identifier: StoryboardID.loginVC)
+        let controller = storyboard.instantiateViewController(withIdentifier: StoryboardID.loginVC)
         present(controller, animated: true, completion: nil)
     }
     
     @IBAction func loginOutClicked(_ sender: Any) {
         
         guard let user = Auth.auth().currentUser else { return }
-        
-        if user.isAnonymous {
-            presentLoginController()
-            
-        } else {
-            do {
-                try Auth.auth().signOut()
-                Auth.auth().signInAnonymously { (result, error) in
-                    
-                    if let error = error {
+                
+                if user.isAnonymous {
+                    presentLoginController()
+                } else {
+                    do {
+                        try Auth.auth().signOut()
+                        Auth.auth().signInAnonymously { (result, error) in
+                            if let error = error {
+                                Auth.auth().handleFireAuthError(error: error, viewController: self)
+                                debugPrint(error)
+                            }
+                            self.presentLoginController()
+                        }
+                    } catch {
                         Auth.auth().handleFireAuthError(error: error, viewController: self)
                         debugPrint(error)
                     }
-                    self.presentLoginController()
                 }
-                
-            } catch {
-                Auth.auth().handleFireAuthError(error: error, viewController: self)
-                debugPrint(error)
             }
         }
-    }
-}
 
-extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Functions Document Change
     func onDocumentAdded(change: DocumentChange, category: Category) {
-        
         let newIndex = Int(change.newIndex)
         categories.insert(category, at: newIndex)
         collectionView.insertItems(at: [IndexPath(item: newIndex, section: 0)])
     }
     
     func onDocumentModified(change: DocumentChange, category: Category) {
-        
         if change.newIndex == change.oldIndex {
             // Item changed, but remained in the same position
             let index = Int(change.newIndex)
             categories[index] = category
             collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+            
         } else {
             // Item changed and changed position
             let oldIndex = Int(change.oldIndex)
@@ -166,9 +160,8 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     }
     
     func onDocumentRemoved(change: DocumentChange) {
-        
         let oldIndex = Int(change.oldIndex)
-        categories.remove(at: oldIndex)
+        categories.remove(at: oldIndex )
         collectionView.deleteItems(at: [IndexPath(item: oldIndex, section: 0)])
     }
     
@@ -179,34 +172,31 @@ extension HomeVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.categoryCell, for: indexPath) as? CategoryCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.categoryCell, for: indexPath) as? CategoryCell {
             
-            cell.configureCell(category: categories[indexPath.row])
+            cell.configureCell(category: categories[indexPath.item])
             return cell
         }
-        
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = view.frame.width
-        let cellWidth = (width - 30) / 2
+        let cellWidth = (width  - 30) / 2
         let cellHeight = cellWidth * 1.5
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        selectedcategory = categories[indexPath.item]
-        performSegue(withIdentifier: Segue.toProductVC, sender: self)
+        selectedCategory = categories[indexPath.item]
+        performSegue(withIdentifier: Segues.toProductVC, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == Segue.toProductVC {
-            if let destination = segue.destination as? ProductVC {
-                destination.category = selectedcategory
+        if segue.identifier == Segues.toProductVC {
+            if let destination = segue.destination as? ProductsVC {
+                destination.category = selectedCategory
             }
         }
     }

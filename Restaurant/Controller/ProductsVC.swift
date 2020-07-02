@@ -16,13 +16,13 @@ class ProductsVC: UIViewController {
     var products = [Product]()
     var category: Category!
     
-    var listener: ListFormatter!
-    var databse: Firestore!
+    var listener : ListFormatter!
+    var database : Firestore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        databse = Firestore.firestore()
+        database = Firestore.firestore()
         setupTableView()
         setupQuery()
     }
@@ -31,40 +31,39 @@ class ProductsVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: Identifier.productCell, bundle: nil),
-                                 forCellReuseIdentifier: Identifier.productCell)
+        tableView.register(UINib(nibName: Identifiers.productCell, bundle: nil),
+                           forCellReuseIdentifier: Identifiers.productCell)
     }
 
     func setupQuery() {
         
-        listener = databse.products(category: category.id).addSnapshotListener({ (snap, error) in
-            
-            if let error = error {
-                debugPrint(error.localizedDescription)
-                return
-            }
-            
-            snap?.documentChanges.forEach({ (change) in
-                
-                let data = change.document.data()
-                let product = Product.init(data: data)
-                
-                switch change.type {
-                case .added:
-                    self.onDocumentAdded(change: change, product: product)
-                case .modified:
-                    self.onDocumentModified(change: change, product: product)
-                case .removed:
-                    self.onDocumentRemoved(change: change)
+        listener = database.products(category: category.id).addSnapshotListener({ (snap, error) in
+                    
+                if let error =  error {
+                    debugPrint(error.localizedDescription)
                 }
-            })
-        }) as? ListFormatter
+                    
+                snap?.documentChanges.forEach({ (change) in
+                        
+                    let data = change.document.data()
+                    let product = Product.init(data: data)
+                    
+                    switch change.type {
+                    case .added:
+                        return self.onDocumentAdded(change: change, product: product)
+                    case .modified:
+                        return self.onDocumentModified(change: change, product: product)
+                    case .removed:
+                        return self.onDocumentRemoved(change: change)
+                    }
+                })
+                    
+            }) as? ListFormatter
+        }
     }
-}
 
 extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
     
-    // MARK: - Functions Document Change
     func onDocumentAdded(change: DocumentChange, product: Product) {
         
         let newIndex = Int(change.newIndex)
@@ -97,19 +96,20 @@ extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deleteRows(at: [IndexPath(row: oldIndex, section: 0)], with: .left)
     }
     
-    // MARK: TableView DataSource and Delegate
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.productCell, for: indexPath) as? ProductCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.productCell, for: indexPath) as? ProductCell {
             
             cell.configureCell(product: products[indexPath.row])
             
             return cell
         }
+        
         return UITableViewCell()
     }
     
