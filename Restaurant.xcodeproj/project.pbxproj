@@ -171,8 +171,8 @@
 		365B960D24A26D8E00023668 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				36EAF06B24AA654C00A19A2B /* ProductCell.swift */,
 				36EAF05C24AA5CA900A19A2B /* CategoryCell.swift */,
+				36EAF06B24AA654C00A19A2B /* ProductCell.swift */,
 				3667CAF324A4EE6A00D2630C /* RoundedViews.swift */,
 			);
 			path = Views;

@@ -190,11 +190,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCategory = categories[indexPath.item]
-        performSegue(withIdentifier: Segues.toProductVC, sender: self)
+        performSegue(withIdentifier: Segues.toProductsVC, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.toProductVC {
+        if segue.identifier == Segues.toProductsVC {
             if let destination = segue.destination as? ProductsVC {
                 destination.category = selectedCategory
             }

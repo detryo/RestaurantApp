@@ -25,7 +25,7 @@
                                     <size key="itemSize" width="223" height="232"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
@@ -62,51 +62,12 @@
                         <outlet property="collectionView" destination="ZTs-gN-Nr4" id="Is8-dm-htj"/>
                         <outlet property="loginOutButton" destination="8RB-tU-G5d" id="imM-3O-w3Z"/>
                         <segue destination="rM8-hc-kJo" kind="show" identifier="toAddEditCategory" id="l5t-BH-dGL"/>
-                        <segue destination="D7x-wO-kY6" kind="show" identifier="toProductsVC" id="roX-ou-i2x"/>
+                        <segue destination="GXI-AZ-ZkG" kind="show" identifier="toProductsVC" id="PL0-ch-vOS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvM-ue-LwD" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1086" y="100"/>
-        </scene>
-        <!--Admin ProductsVC-->
-        <scene sceneID="gss-Ja-wk6">
-            <objects>
-                <viewController id="D7x-wO-kY6" customClass="AdminProductsVC" customModule="RestaurantAdmin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7hE-69-Dx2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-Kk-F3E">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ddj-An-MI5">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="lz1-Kk-F3E" firstAttribute="leading" secondItem="32i-1d-T3l" secondAttribute="leading" id="8ea-Hu-8qa"/>
-                            <constraint firstItem="Ddj-An-MI5" firstAttribute="top" secondItem="32i-1d-T3l" secondAttribute="top" id="DnY-NX-ILr"/>
-                            <constraint firstItem="32i-1d-T3l" firstAttribute="trailing" secondItem="lz1-Kk-F3E" secondAttribute="trailing" id="F6F-k6-mTR"/>
-                            <constraint firstAttribute="bottom" secondItem="lz1-Kk-F3E" secondAttribute="bottom" id="O5h-Yc-J37"/>
-                            <constraint firstItem="Ddj-An-MI5" firstAttribute="leading" secondItem="32i-1d-T3l" secondAttribute="leading" id="bhu-fi-Fcf"/>
-                            <constraint firstAttribute="bottom" secondItem="Ddj-An-MI5" secondAttribute="bottom" id="c8d-GE-7lS"/>
-                            <constraint firstItem="32i-1d-T3l" firstAttribute="trailing" secondItem="Ddj-An-MI5" secondAttribute="trailing" id="gD8-mb-7X9"/>
-                            <constraint firstItem="lz1-Kk-F3E" firstAttribute="top" secondItem="32i-1d-T3l" secondAttribute="top" id="qhO-SS-lO7"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="32i-1d-T3l"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mti-Wm-3Js"/>
-                    <connections>
-                        <segue destination="WrT-aq-Oxd" kind="show" identifier="toAddeditProduct" id="a61-gF-iUy"/>
-                        <segue destination="rM8-hc-kJo" kind="show" identifier="toEditCategory" id="EHm-l4-JQI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vy7-WH-vPm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1085.5072463768117" y="865.84821428571422"/>
         </scene>
         <!--Add Edit ProductsVC-->
         <scene sceneID="9Q5-8Q-fzN">
@@ -160,7 +121,7 @@
                                 <rect key="frame" x="188.5" y="678" width="37" height="37"/>
                                 <color key="color" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9T-sa-Eal">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9T-sa-Eal" customClass="RoundedButton" customModule="RestaurantAdmin" customModuleProvider="target">
                                 <rect key="frame" x="20" y="792" width="374" height="50"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.2666666667" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -170,6 +131,9 @@
                                 <state key="normal" title="Add To Product">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addProductClicked:" destination="WrT-aq-Oxd" eventType="touchUpInside" id="XDn-fx-a5L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -198,6 +162,14 @@
                         <viewLayoutGuide key="safeArea" id="A7i-Uq-ajq"/>
                     </view>
                     <navigationItem key="navigationItem" id="IpN-sL-1pm"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="hm8-0K-WTQ" id="ont-Io-EzV"/>
+                        <outlet property="addProductButton" destination="O9T-sa-Eal" id="Ey6-Mb-fBf"/>
+                        <outlet property="productDescTextView" destination="S0F-wj-2Ew" id="av9-W0-Hlg"/>
+                        <outlet property="productImageView" destination="5lM-s8-DM1" id="R3g-zo-XfC"/>
+                        <outlet property="productNameText" destination="WrG-Hk-HN3" id="gME-H1-FiY"/>
+                        <outlet property="productPriceText" destination="nhs-ng-NVn" id="28k-AH-NRA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbV-OV-0sJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -278,7 +250,7 @@
                     <navigationItem key="navigationItem" id="3yJ-uk-GRB"/>
                     <connections>
                         <outlet property="activityIndicator" destination="zg3-uF-m4y" id="ujE-m6-eSy"/>
-                        <outlet property="addcategoryButton" destination="NSh-eV-Nbo" id="288-G3-Fxs"/>
+                        <outlet property="addCategoryButton" destination="NSh-eV-Nbo" id="288-G3-Fxs"/>
                         <outlet property="categoryImage" destination="lEA-n2-ggd" id="UP7-61-vV8"/>
                         <outlet property="categoryNameText" destination="0IQ-uk-I5t" id="Npr-8H-DeT"/>
                     </connections>
@@ -315,9 +287,49 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
         </scene>
+        <!--Admin ProductsVC-->
+        <scene sceneID="YSi-1D-fML">
+            <objects>
+                <viewController id="GXI-AZ-ZkG" customClass="AdminProductsVC" customModule="RestaurantAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SFx-cd-GgT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_cat3" translatesAutoresizingMaskIntoConstraints="NO" id="6XC-yC-GSO">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aeP-J3-Fyk">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6XC-yC-GSO" firstAttribute="leading" secondItem="m2d-BC-jKN" secondAttribute="leading" id="8lg-Ab-F20"/>
+                            <constraint firstAttribute="bottom" secondItem="aeP-J3-Fyk" secondAttribute="bottom" id="BgD-5w-FZn"/>
+                            <constraint firstItem="6XC-yC-GSO" firstAttribute="top" secondItem="m2d-BC-jKN" secondAttribute="top" id="NDn-Py-m2v"/>
+                            <constraint firstAttribute="bottom" secondItem="6XC-yC-GSO" secondAttribute="bottom" id="cfc-zu-V92"/>
+                            <constraint firstItem="aeP-J3-Fyk" firstAttribute="leading" secondItem="m2d-BC-jKN" secondAttribute="leading" id="cgc-gf-Gkc"/>
+                            <constraint firstItem="m2d-BC-jKN" firstAttribute="trailing" secondItem="aeP-J3-Fyk" secondAttribute="trailing" id="cvc-OU-Clh"/>
+                            <constraint firstItem="aeP-J3-Fyk" firstAttribute="top" secondItem="m2d-BC-jKN" secondAttribute="top" id="o2v-ki-5oc"/>
+                            <constraint firstItem="m2d-BC-jKN" firstAttribute="trailing" secondItem="6XC-yC-GSO" secondAttribute="trailing" id="z8d-l5-a48"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m2d-BC-jKN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XnI-Dg-Xgn"/>
+                    <connections>
+                        <outlet property="tableView" destination="aeP-J3-Fyk" id="hCn-oe-8lL"/>
+                        <segue destination="rM8-hc-kJo" kind="show" identifier="toEditCategory" id="JJI-xJ-HCC"/>
+                        <segue destination="WrT-aq-Oxd" kind="show" identifier="toAddEditProduct" id="OSO-IA-zRO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJC-eu-6w4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="866"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EHm-l4-JQI"/>
+        <segue reference="JJI-xJ-HCC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bg_cat3" width="1500" height="1875"/>

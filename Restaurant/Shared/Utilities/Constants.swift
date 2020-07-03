@@ -31,16 +31,14 @@ struct AppColor {
 }
 
 struct Identifiers {
+    
     static let categoryCell = "CategoryCell"
     static let productCell = "ProductCell"
 }
 
 struct Segues {
-    static let toProductVC = "toProductVC"
-    
-    // Admin Segues
-    static let toAddEditCategory = "toAddEditCategory"
     static let toProductsVC = "toProductsVC"
-    static let toAddEditProduct = "toAddeditProduct"
+    static let toAddEditCategory = "toAddEditCategory"
     static let toEditCategory = "toEditCategory"
+    static let toAddEditProduct = "toAddEditProduct"
 }

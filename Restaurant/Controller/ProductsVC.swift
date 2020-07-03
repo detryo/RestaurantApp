@@ -28,23 +28,23 @@ class ProductsVC: UIViewController {
     }
     
     func setupTableView() {
+            
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.register(UINib(nibName: Identifiers.productCell, bundle: nil),
+                               forCellReuseIdentifier: Identifiers.productCell)
+        }
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: Identifiers.productCell, bundle: nil),
-                           forCellReuseIdentifier: Identifiers.productCell)
-    }
-    // funcion para añadir, modifica y borrar en tiempo real
-    func setupQuery() {
-        
-        listener = database.products(category: category.id).addSnapshotListener({ (snap, error) in
-                    
+        func setupQuery() {
+            
+            listener = database.products(category: category.id).addSnapshotListener({ (snap, error) in
+                
                 if let error =  error {
                     debugPrint(error.localizedDescription)
                 }
-                    
+                
                 snap?.documentChanges.forEach({ (change) in
-                        
+                    
                     let data = change.document.data()
                     let product = Product.init(data: data)
                     
@@ -57,20 +57,20 @@ class ProductsVC: UIViewController {
                         return self.onDocumentRemoved(change: change)
                     }
                 })
-                    
+                
             }) as? ListFormatter
         }
     }
 
 extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
-    // funcion para añadir un nuevo producto a firebase
+    
     func onDocumentAdded(change: DocumentChange, product: Product) {
         
         let newIndex = Int(change.newIndex)
         products.insert(product, at: newIndex)
         tableView.insertRows(at: [IndexPath(row: newIndex, section: 0)], with: .fade)
     }
-    // funcion para modificar un producto
+    
     func onDocumentModified(change: DocumentChange, product: Product) {
         
         if change.oldIndex == change.newIndex {
@@ -88,7 +88,7 @@ extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
             tableView.moveRow(at: IndexPath(row: oldIndex, section: 0), to: IndexPath(row: newIndex, section: 0))
         }
     }
-    // funcion para borrar un producto
+    
     func onDocumentRemoved(change: DocumentChange) {
         
         let oldIndex = Int(change.oldIndex)
@@ -96,7 +96,7 @@ extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deleteRows(at: [IndexPath(row: oldIndex, section: 0)], with: .left)
     }
     
-    // MARK: Table VIew Delegate and Source
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }

@@ -27,12 +27,11 @@ class ProductDetailVC: UIViewController {
         if let url = URL(string: product.imageURL) {
             productImage.kf.setImage(with: url)
         }
-        
+
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = Locale.uk
         
-        // Pasar Double a String
         if let price = formatter.string(from: product.price as NSNumber) {
             productPrice.text = price
         }

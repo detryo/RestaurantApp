@@ -27,7 +27,21 @@ class ProductCell: UITableViewCell {
         
         // usamos Kingficher para bajar imagenes, en este caso, de Firebase
         if let url = URL(string: product.imageURL) {
-            productImage.kf.setImage(with: url)
+            
+            let placeholder = UIImage(named: "placeholder")
+            productImage.kf.indicatorType = .activity
+        
+            let options : KingfisherOptionsInfo = [KingfisherOptionsInfoItem.transition(.fade(0.2))]
+            productImage.kf.setImage(with: url, placeholder: placeholder, options: options)
+        }
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale.uk
+        
+        // convert our price, becouse is Double in String
+        if let price = formatter.string(from: product.price as NSNumber) {
+            productPrice.text = price
         }
     }
 
