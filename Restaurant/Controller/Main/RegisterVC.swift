@@ -70,7 +70,6 @@ class RegisterVC: UIViewController {
         activityIndicator.startAnimating()
         // Creamos el registro de usuario y el del anonimo
         guard let authUser = Auth.auth().currentUser else { return }
-        
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         
         authUser.link(with: credential) { (result, error) in
@@ -78,10 +77,37 @@ class RegisterVC: UIViewController {
             if let error = error {
                 debugPrint(error.localizedDescription)
                 Auth.auth().handleFireAuthError(error: error, viewController: self)
-                self.activityIndicator.stopAnimating()
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            
+            //Firebase Authenticated user result
+            guard let fireUser = result?.user else { return }
+            let artUser = User.init(id: fireUser.uid, email: email, userName: userName, stripeID: "")
+            
+            // Upload to Firestore
+            self.createFirestoreUser(user: artUser)
+        }
+    }
+    
+    func createFirestoreUser(user: User) {
+        // Step 1: Create document reference
+        let newUserRef = Firestore.firestore().collection("user").document(user.id)
+        
+        // Step 2: Create model data
+        let data = User.modelToData(user: user)
+        
+        // Step 3: Upload to Firestore
+        newUserRef.setData(data) { (error) in
+            
+            if let error = error {
+                
+                Auth.auth().handleFireAuthError(error: error, viewController: self)
+                debugPrint("Unable to upload new user document \(error.localizedDescription)")
+                return
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+            self.activityIndicator.stopAnimating()
         }
     }
 }

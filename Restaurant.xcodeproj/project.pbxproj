@@ -12,6 +12,7 @@
 		362A64F024A273A5003699A2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362A64EF24A273A5003699A2 /* HomeVC.swift */; };
 		362A64F224A273CB003699A2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362A64F124A273CB003699A2 /* LoginVC.swift */; };
 		362A64F424A273DA003699A2 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362A64F324A273DA003699A2 /* RegisterVC.swift */; };
+		36437F7624B07A3D0087FF0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36437F7524B07A3D0087FF0C /* User.swift */; };
 		3654FD9324ADF8F3007213BA /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362A64EF24A273A5003699A2 /* HomeVC.swift */; };
 		3654FD9424ADF90A007213BA /* ProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF05A24AA5B6D00A19A2B /* ProductsVC.swift */; };
 		3654FD9524ADF91B007213BA /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36593BAB24ACEDD8007DFB50 /* ProductDetailVC.swift */; };
@@ -68,6 +69,7 @@
 		362A64EF24A273A5003699A2 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		362A64F124A273CB003699A2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		362A64F324A273DA003699A2 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		36437F7524B07A3D0087FF0C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3654FD9824ADFCC9007213BA /* AddEditCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCategoryVC.swift; sourceTree = "<group>"; };
 		3654FD9A24AE3192007213BA /* AdminProductsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductsVC.swift; sourceTree = "<group>"; };
 		3654FD9C24AE3270007213BA /* AddEditProductsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditProductsVC.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				36EAF06224AA5E2400A19A2B /* Category.swift */,
 				36EAF07124AA681700A19A2B /* Product.swift */,
+				36437F7524B07A3D0087FF0C /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				362A64F024A273A5003699A2 /* HomeVC.swift in Sources */,
 				3667CAF424A4EE6A00D2630C /* RoundedViews.swift in Sources */,
 				36EAF06D24AA654D00A19A2B /* ProductCell.swift in Sources */,
+				36437F7624B07A3D0087FF0C /* User.swift in Sources */,
 				3667CAF724A4F07900D2630C /* ForgotPasswordVC.swift in Sources */,
 				362A64F224A273CB003699A2 /* LoginVC.swift in Sources */,
 				36E4EF6A24A3C6D000199A37 /* Firebase+Utils.swift in Sources */,
