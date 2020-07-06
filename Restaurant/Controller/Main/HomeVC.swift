@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 class HomeVC: UIViewController {
     // Oulets
@@ -18,8 +19,8 @@ class HomeVC: UIViewController {
     // Variables
     var categories = [Category]()
     var selectedCategory: Category!
-    var database : Firestore!
-    var listener : ListenerRegistration!
+    var database: Firestore!
+    var listener: ListenerRegistration!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -255,7 +255,6 @@
 		36BD906824A25C320090C14E = {
 			isa = PBXGroup;
 			children = (
-				365B960B24A26D7000023668 /* Shared */,
 				36BD907324A25C330090C14E /* Restaurant */,
 				36BD908D24A25CA90090C14E /* RestaurantAdmin */,
 				36BD907224A25C330090C14E /* Products */,
@@ -276,6 +275,7 @@
 		36BD907324A25C330090C14E /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				365B960B24A26D7000023668 /* Shared */,
 				3663B21A24B3240300859E16 /* Services */,
 				365B961224A26E7300023668 /* Controller */,
 				365B961124A26E6500023668 /* Xibs */,

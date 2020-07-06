@@ -1,9 +1,6 @@
 {
   "images" : [
-    {
-      "filename" : "boq.pdf",
-      "idiom" : "universal"
-    }
+
   ],
   "info" : {
     "author" : "xcode",
