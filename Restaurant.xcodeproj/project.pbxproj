@@ -15,6 +15,7 @@
 		36437F7624B07A3D0087FF0C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36437F7524B07A3D0087FF0C /* User.swift */; };
 		364676E224B3264600DE6522 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362A64EF24A273A5003699A2 /* HomeVC.swift */; };
 		364676E424B328B200DE6522 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364676E324B328B200DE6522 /* UserService.swift */; };
+		36525AFD24C5BAEA00ABB96F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364676E324B328B200DE6522 /* UserService.swift */; };
 		3654FD9424ADF90A007213BA /* ProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAF05A24AA5B6D00A19A2B /* ProductsVC.swift */; };
 		3654FD9524ADF91B007213BA /* ProductDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36593BAB24ACEDD8007DFB50 /* ProductDetailVC.swift */; };
 		3654FD9624ADF92A007213BA /* ProductDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36593BAC24ACEDD8007DFB50 /* ProductDetailVC.xib */; };
@@ -32,6 +33,10 @@
 		3667CAF424A4EE6A00D2630C /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3667CAF324A4EE6A00D2630C /* RoundedViews.swift */; };
 		3667CAF724A4F07900D2630C /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3667CAF524A4F07900D2630C /* ForgotPasswordVC.swift */; };
 		3667CAF824A4F07900D2630C /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3667CAF624A4F07900D2630C /* ForgotPasswordVC.xib */; };
+		3695620524BC571A008594BB /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695620424BC571A008594BB /* CheckoutVC.swift */; };
+		3695620824BC5DEE008594BB /* StripeCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695620724BC5DEE008594BB /* StripeCart.swift */; };
+		3695620B24BC628B008594BB /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695620924BC628B008594BB /* CartItemCell.swift */; };
+		3695620C24BC628B008594BB /* CartItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3695620A24BC628B008594BB /* CartItemCell.xib */; };
 		36BD907524A25C330090C14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD907424A25C330090C14E /* AppDelegate.swift */; };
 		36BD907724A25C330090C14E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD907624A25C330090C14E /* SceneDelegate.swift */; };
 		36BD907C24A25C330090C14E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BD907A24A25C330090C14E /* Main.storyboard */; };
@@ -43,6 +48,9 @@
 		36BD909624A25CA90090C14E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BD909424A25CA90090C14E /* Main.storyboard */; };
 		36BD909B24A25CAB0090C14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BD909924A25CAB0090C14E /* LaunchScreen.storyboard */; };
 		36BD90A024A25CB50090C14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BD907D24A25C350090C14E /* Assets.xcassets */; };
+		36CD623F24C0A92600CBC404 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36437F7524B07A3D0087FF0C /* User.swift */; };
+		36CD624124C0AC9F00CBC404 /* StripeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD624024C0AC9F00CBC404 /* StripeAPI.swift */; };
+		36CD624224C0ACAE00CBC404 /* StripeCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695620724BC5DEE008594BB /* StripeCart.swift */; };
 		36E4EF6624A3C31300199A37 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E4EF6524A3C31300199A37 /* Extensions.swift */; };
 		36E4EF6824A3C57900199A37 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E4EF6724A3C57800199A37 /* Constants.swift */; };
 		36E4EF6A24A3C6D000199A37 /* Firebase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E4EF6924A3C6D000199A37 /* Firebase+Utils.swift */; };
@@ -81,6 +89,10 @@
 		3667CAF324A4EE6A00D2630C /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		3667CAF524A4F07900D2630C /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		3667CAF624A4F07900D2630C /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
+		3695620424BC571A008594BB /* CheckoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
+		3695620724BC5DEE008594BB /* StripeCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCart.swift; sourceTree = "<group>"; };
+		3695620924BC628B008594BB /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
+		3695620A24BC628B008594BB /* CartItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartItemCell.xib; sourceTree = "<group>"; };
 		36BD907124A25C330090C14E /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BD907424A25C330090C14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BD907624A25C330090C14E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +107,7 @@
 		36BD909524A25CA90090C14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36BD909A24A25CAB0090C14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36BD909C24A25CAB0090C14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36CD624024C0AC9F00CBC404 /* StripeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeAPI.swift; sourceTree = "<group>"; };
 		36E4EF6524A3C31300199A37 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		36E4EF6724A3C57800199A37 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		36E4EF6924A3C6D000199A37 /* Firebase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Utils.swift"; sourceTree = "<group>"; };
@@ -178,6 +191,7 @@
 			children = (
 				36EAF05C24AA5CA900A19A2B /* CategoryCell.swift */,
 				36EAF06B24AA654C00A19A2B /* ProductCell.swift */,
+				3695620924BC628B008594BB /* CartItemCell.swift */,
 				3667CAF324A4EE6A00D2630C /* RoundedViews.swift */,
 			);
 			path = Views;
@@ -198,6 +212,7 @@
 			children = (
 				36EAF05D24AA5CA900A19A2B /* CategoryCell.xib */,
 				36EAF06C24AA654D00A19A2B /* ProductCell.xib */,
+				3695620A24BC628B008594BB /* CartItemCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -228,6 +243,7 @@
 			children = (
 				365B961324A26EB100023668 /* Main */,
 				36EAF05A24AA5B6D00A19A2B /* ProductsVC.swift */,
+				3695620424BC571A008594BB /* CheckoutVC.swift */,
 				36BD907424A25C330090C14E /* AppDelegate.swift */,
 				36BD907624A25C330090C14E /* SceneDelegate.swift */,
 			);
@@ -252,9 +268,19 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		3695620624BC5DD1008594BB /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				3695620724BC5DEE008594BB /* StripeCart.swift */,
+				36CD624024C0AC9F00CBC404 /* StripeAPI.swift */,
+			);
+			path = Stripe;
+			sourceTree = "<group>";
+		};
 		36BD906824A25C320090C14E = {
 			isa = PBXGroup;
 			children = (
+				365B960B24A26D7000023668 /* Shared */,
 				36BD907324A25C330090C14E /* Restaurant */,
 				36BD908D24A25CA90090C14E /* RestaurantAdmin */,
 				36BD907224A25C330090C14E /* Products */,
@@ -275,7 +301,7 @@
 		36BD907324A25C330090C14E /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				365B960B24A26D7000023668 /* Shared */,
+				3695620624BC5DD1008594BB /* Stripe */,
 				3663B21A24B3240300859E16 /* Services */,
 				365B961224A26E7300023668 /* Controller */,
 				365B961124A26E6500023668 /* Xibs */,
@@ -341,7 +367,7 @@
 				36BD908824A25CA90090C14E /* Sources */,
 				36BD908924A25CA90090C14E /* Frameworks */,
 				36BD908A24A25CA90090C14E /* Resources */,
-				60275B8C83F524997709A78D /* [CP] Embed Pods Frameworks */,
+				282735FF207A8053B8A4C7B6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -402,6 +428,7 @@
 				36BD907E24A25C350090C14E /* Assets.xcassets in Resources */,
 				36593BAE24ACEDD8007DFB50 /* ProductDetailVC.xib in Resources */,
 				3667CAF824A4F07900D2630C /* ForgotPasswordVC.xib in Resources */,
+				3695620C24BC628B008594BB /* CartItemCell.xib in Resources */,
 				36BD907C24A25C330090C14E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +467,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Restaurant/Pods-Restaurant-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		282735FF207A8053B8A4C7B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantAdmin/Pods-RestaurantAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RestaurantAdmin/Pods-RestaurantAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestaurantAdmin/Pods-RestaurantAdmin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		44F7E01B87ED7B403C86FF8C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,23 +500,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		60275B8C83F524997709A78D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RestaurantAdmin/Pods-RestaurantAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RestaurantAdmin/Pods-RestaurantAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RestaurantAdmin/Pods-RestaurantAdmin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1A423F5FF5262F5B1DD3820 /* [CP] Check Pods Manifest.lock */ = {
@@ -500,6 +527,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3695620824BC5DEE008594BB /* StripeCart.swift in Sources */,
+				3695620524BC571A008594BB /* CheckoutVC.swift in Sources */,
 				36EAF05B24AA5B6D00A19A2B /* ProductsVC.swift in Sources */,
 				36BD907524A25C330090C14E /* AppDelegate.swift in Sources */,
 				364676E424B328B200DE6522 /* UserService.swift in Sources */,
@@ -509,6 +538,7 @@
 				3667CAF424A4EE6A00D2630C /* RoundedViews.swift in Sources */,
 				36EAF06D24AA654D00A19A2B /* ProductCell.swift in Sources */,
 				36437F7624B07A3D0087FF0C /* User.swift in Sources */,
+				3695620B24BC628B008594BB /* CartItemCell.swift in Sources */,
 				3667CAF724A4F07900D2630C /* ForgotPasswordVC.swift in Sources */,
 				362A64F224A273CB003699A2 /* LoginVC.swift in Sources */,
 				36E4EF6A24A3C6D000199A37 /* Firebase+Utils.swift in Sources */,
@@ -518,6 +548,7 @@
 				36593BAD24ACEDD8007DFB50 /* ProductDetailVC.swift in Sources */,
 				362A64F424A273DA003699A2 /* RegisterVC.swift in Sources */,
 				36EAF05E24AA5CA900A19A2B /* CategoryCell.swift in Sources */,
+				36CD624124C0AC9F00CBC404 /* StripeAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,12 +564,15 @@
 				364676E224B3264600DE6522 /* HomeVC.swift in Sources */,
 				3654FD9424ADF90A007213BA /* ProductsVC.swift in Sources */,
 				3654FD9D24AE3270007213BA /* AddEditProductsVC.swift in Sources */,
+				36CD624224C0ACAE00CBC404 /* StripeCart.swift in Sources */,
 				3654FD9B24AE3193007213BA /* AdminProductsVC.swift in Sources */,
 				366038A324AB9C1D00D1060D /* CategoryCell.swift in Sources */,
 				3654FD9924ADFCC9007213BA /* AddEditCategoryVC.swift in Sources */,
 				366038A524AB9C3300D1060D /* Extensions.swift in Sources */,
 				36BD908F24A25CA90090C14E /* AppDelegate.swift in Sources */,
 				36BD909124A25CA90090C14E /* SceneDelegate.swift in Sources */,
+				36CD623F24C0A92600CBC404 /* User.swift in Sources */,
+				36525AFD24C5BAEA00ABB96F /* UserService.swift in Sources */,
 				366038A224AB9C1A00D1060D /* ProductCell.swift in Sources */,
 				36EAF07324AA681700A19A2B /* Product.swift in Sources */,
 				3654FD9524ADF91B007213BA /* ProductDetailVC.swift in Sources */,
@@ -705,6 +739,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 347CFEP3N9;
 				INFOPLIST_FILE = Restaurant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -724,6 +759,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 347CFEP3N9;
 				INFOPLIST_FILE = Restaurant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

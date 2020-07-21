@@ -113,6 +113,11 @@ class HomeVC: UIViewController {
         present(controller, animated: true, completion: nil)
     }
     
+    @IBAction func favoritesClicked(_ sender: Any) {
+        performSegue(withIdentifier: Segues.toFavorites, sender: self)
+    }
+    
+    
     @IBAction func loginOutClicked(_ sender: Any) {
         
         guard let user = Auth.auth().currentUser else { return }
@@ -122,7 +127,6 @@ class HomeVC: UIViewController {
                 } else {
                     do {
                         try Auth.auth().signOut()
-                        
                         UserService.logoutUser()
                         
                         Auth.auth().signInAnonymously { (result, error) in
@@ -198,14 +202,24 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         selectedCategory = categories[indexPath.item]
         performSegue(withIdentifier: Segues.toProductsVC, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == Segues.toProductsVC {
             if let destination = segue.destination as? ProductsVC {
                 destination.category = selectedCategory
+                
+            } else if segue.identifier == Segues.toFavorites {
+                
+                if let destination = segue.destination as? ProductsVC {
+                    
+                    destination.category = selectedCategory
+                    destination.showFavorites = true
+                }
             }
         }
     }

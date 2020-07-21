@@ -9,15 +9,15 @@
 import UIKit
 import FirebaseFirestore
 
-class ProductsVC: UIViewController {
+class ProductsVC: UIViewController, ProductCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var products = [Product]()
     var category: Category!
-    
     var listener : ListFormatter!
     var database : Firestore!
+    var showFavorites = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,28 @@ class ProductsVC: UIViewController {
         setupQuery()
     }
     
+    func productFavorited(product: Product) {
+        
+        if UserService.isGuest {
+            self.simpleAlert(title: "Hi friend", message: "This is a user only feature, please create a registered user to take advantage of all our features.")
+            return
+        }
+        
+        UserService.favoriteSelected(product: product)
+        guard let index = products.firstIndex(of: product) else { return }
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    }
+    
+    func productAddToCart(product: Product) {
+        
+        if UserService.isGuest {
+            self.simpleAlert(title: "Hi friend", message: "This is a user only feature, please create a registered user to take advantage of all our features.")
+            return
+        }
+        
+        stripeCart.addItemToCart(item: product)
+    }
+    
     func setupTableView() {
             
             tableView.delegate = self
@@ -34,33 +56,41 @@ class ProductsVC: UIViewController {
             tableView.register(UINib(nibName: Identifiers.productCell, bundle: nil),
                                forCellReuseIdentifier: Identifiers.productCell)
         }
+    
         
-        func setupQuery() {
+    func setupQuery() {
             
-            listener = database.products(category: category.id).addSnapshotListener({ (snap, error) in
-                
-                if let error =  error {
-                    debugPrint(error.localizedDescription)
-                }
-                
-                snap?.documentChanges.forEach({ (change) in
-                    
-                    let data = change.document.data()
-                    let product = Product.init(data: data)
-                    
-                    switch change.type {
-                    case .added:
-                        return self.onDocumentAdded(change: change, product: product)
-                    case .modified:
-                        return self.onDocumentModified(change: change, product: product)
-                    case .removed:
-                        return self.onDocumentRemoved(change: change)
-                    }
-                })
-                
-            }) as? ListFormatter
+        var ref: Query!
+            
+        if showFavorites {
+            ref = database.collection("users").document(UserService.user.id).collection("favorites")
+        } else {
+            ref = database.products(category: category.id)
         }
+            
+        listener = ref.addSnapshotListener({ (snap, error) in
+                
+            if let error =  error {
+                debugPrint(error.localizedDescription)
+            }
+               
+            snap?.documentChanges.forEach({ (change) in
+                    
+                let data = change.document.data()
+                let product = Product.init(data: data)
+                    
+                switch change.type {
+                case .added:
+                    return self.onDocumentAdded(change: change, product: product)
+                case .modified:
+                    return self.onDocumentModified(change: change, product: product)
+                case .removed:
+                    return self.onDocumentRemoved(change: change)
+                }
+            })
+        }) as? ListFormatter
     }
+}
 
 extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
     
@@ -105,7 +135,7 @@ extension ProductsVC: UITableViewDataSource, UITableViewDelegate {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.productCell, for: indexPath) as? ProductCell {
             
-            cell.configureCell(product: products[indexPath.row])
+            cell.configureCell(product: products[indexPath.row], delegate: self)
             
             return cell
         }

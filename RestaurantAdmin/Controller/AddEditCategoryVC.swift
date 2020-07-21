@@ -46,46 +46,44 @@ class AddEditCategoryVC: UIViewController {
         launchImagePicker()
     }
     
-    
-    
     @IBAction func addCategoryClicked(_ sender: Any) {
         uploadImageThenDocument()
     }
     // MARK: Upload Image and Name to Firebase
     func uploadImageThenDocument() {
             
-            guard let image = categoryImage.image,
-                  let categoryName = categoryNameText.text, categoryName.isNotEmpty else {
-                    simpleAlert(title: "Error", message: "Must add category image and name")
-                    return
+        guard let image = categoryImage.image,
+                let categoryName = categoryNameText.text, categoryName.isNotEmpty else {
+                simpleAlert(title: "Error", message: "Must add category image and name")
+                return
+        }
+            
+        activityIndicator.startAnimating()
+            
+        guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
+            
+        let imageRef = Storage.storage().reference().child("/categoryImages/\(categoryName).jpg")
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+            
+        imageRef.putData(imageData, metadata: metaData) { (metaData, error) in
+            if let error = error {
+                self.handlerError(error: error, message: "Unable to upload image")
+                return
             }
-            
-            activityIndicator.startAnimating()
-            
-            guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
-            
-            let imageRef = Storage.storage().reference().child("/categoryImages/\(categoryName).jpg")
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/jpg"
-            
-            imageRef.putData(imageData, metadata: metaData) { (metaData, error) in
+
+            imageRef.downloadURL { (url, error) in
                 if let error = error {
                     self.handlerError(error: error, message: "Unable to upload image")
                     return
                 }
-
-                imageRef.downloadURL { (url, error) in
-                    if let error = error {
-                        self.handlerError(error: error, message: "Unable to upload image")
-                        return
-                    }
                     
-                    guard let url = url else { return }
-                    print(url)
-                    self.uploadDocuments(url: url.absoluteString)
-                }
+                guard let url = url else { return }
+                print(url)
+                self.uploadDocuments(url: url.absoluteString)
             }
         }
+    }
         
         func uploadDocuments(url: String) {
             

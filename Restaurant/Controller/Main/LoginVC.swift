@@ -53,7 +53,6 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func guestClicked(_ sender: UIButton) {
-        
-        
+        dismiss(animated: true, completion: nil)
     }
 }

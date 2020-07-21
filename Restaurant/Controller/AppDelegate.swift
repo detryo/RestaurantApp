@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         FirebaseApp.configure()
+        Stripe.setDefaultPublishableKey("pk_test_51H2a4NJlXYOHQRXiORwr63urmOcIjvdQecUmrNcdkYizev0AJ26zCwy0YSLYrE6izVC2VbW5JtOIbKjOJcDxSI5x00KPvuBeuk")
         return true
     }
 

@@ -1,11 +1,12 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.0'
+ platform :ios, '13.5'
 
 def shared_pods
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'Firebase/Functions'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.0'
   pod 'CodableFirebase'

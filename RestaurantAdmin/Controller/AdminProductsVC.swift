@@ -11,45 +11,53 @@ import UIKit
 class AdminProductsVC: ProductsVC {
     
     var selectedProduct : Product?
+    
 
-        override func viewDidLoad() {
-            super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-            let editCategoryButton = UIBarButtonItem(title: "Edit Category", style: .plain, target: self, action: #selector(editCategory))
-            let newProductButton = UIBarButtonItem(title: "New Product", style: .plain, target: self, action: #selector(newProduct))
+        let editCategoryButton = UIBarButtonItem(title: "Edit Category", style: .plain, target: self, action: #selector(editCategory))
+        let newProductButton = UIBarButtonItem(title: "New Product", style: .plain, target: self, action: #selector(newProduct))
             
-            navigationItem.setRightBarButtonItems([editCategoryButton, newProductButton], animated: false)
-        }
+        navigationItem.setRightBarButtonItems([editCategoryButton, newProductButton], animated: false)
+    }
         
-        @objc func editCategory() {
-            performSegue(withIdentifier: Segues.toEditCategory, sender: self)
-        }
+    @objc func editCategory() {
+        performSegue(withIdentifier: Segues.toEditCategory, sender: self)
+    }
 
-
-        @objc func newProduct() {
-            performSegue(withIdentifier: Segues.toAddEditProduct, sender: self)
-        }
+    @objc func newProduct() {
+        performSegue(withIdentifier: Segues.toAddEditProduct, sender: self)
+    }
         
-        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            // Editing Products, products, viene de ProductsVC, por eso esta instanciado
-            selectedProduct = products[indexPath.row]
-            performSegue(withIdentifier: Segues.toAddEditProduct, sender: self)
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Editing Products, products, viene de ProductsVC, por eso esta instanciado
+        selectedProduct = products[indexPath.row]
+        performSegue(withIdentifier: Segues.toAddEditProduct, sender: self)
+    }
         
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
-            if segue.identifier == Segues.toAddEditProduct {
+        if segue.identifier == Segues.toAddEditProduct {
                 
-                if let destination = segue.destination as? AddEditProductsVC {
-                    destination.selectedCategory = category
-                    destination.productToEdit = selectedProduct
-                }
+            if let destination = segue.destination as? AddEditProductsVC {
+                destination.selectedCategory = category
+                destination.productToEdit = selectedProduct
+            }
                 
-            } else if segue.identifier == Segues.toEditCategory {
+        } else if segue.identifier == Segues.toEditCategory {
                 
-                if let destination = segue.destination as? AddEditCategoryVC {
-                    destination.categoryToEdit = category
-                }
+            if let destination = segue.destination as? AddEditCategoryVC {
+                destination.categoryToEdit = category
             }
         }
     }
+    
+    override func productFavorited(product: Product) {
+        return
+    }
+    
+    override func productAddToCart(product: Product) {
+        return
+    }
+}
